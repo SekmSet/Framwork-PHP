@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /tmp
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_URI} !^/tmp/(webroot/.+|index.php|robots.txt)$
+RewriteRule ^ index.php [QSA,L]
+
