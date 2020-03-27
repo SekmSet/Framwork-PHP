@@ -1,6 +1,6 @@
 RewriteEngine On
-RewriteBase /tmp
+RewriteBase /MVC_PiePHP
 RewriteCond %{REQUEST_FILENAME} !-f [OR]
-RewriteCond %{REQUEST_URI} !^/tmp/(webroot/.+|index.php|robots.txt)$
+RewriteCond %{REQUEST_URI} !^/MVC_PiePHP/(webroot/.+|index.php|robots.txt)$
 RewriteRule ^ index.php [QSA,L]
 

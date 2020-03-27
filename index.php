@@ -2,10 +2,10 @@
 
 <pre>
 <?php
-print_r($_GET);
-print_r($_POST);
-print_r($_SERVER);
-?>
+//print_r($_GET);
+//print_r($_POST);
+//print_r($_SERVER);
+//?>
 </pre>
 
 <?php
@@ -16,4 +16,3 @@ require_once implode(DIRECTORY_SEPARATOR, ['Core','autoload.php']);
 
 $app = new Core\Core();
 $app->run();
-
