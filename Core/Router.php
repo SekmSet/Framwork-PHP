@@ -7,14 +7,14 @@ class Router
 
     private static $base_uri = 'MVC_PiePHP/';
     private static $routes = [
-        '/' => [
+        /*'/' => [
             'controller' => 'app',
             'action' => 'index'
         ],
         '/register' => [
             'controller' => 'app',
             'action' => 'index'
-        ],
+        ],*/
     ];
 
     public static function connect($url, $route){

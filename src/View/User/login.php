@@ -9,7 +9,7 @@
 <body>
     <header><h1>Un titre</h1></header>
     <div>
-        <form method="post" action="../../index.php">
+        <form method="post" action="../../../index.php">
             <label for="email">Email</label>
             <input type="text" id="email" name="email" placeholder="priscilla.joly@epitech.eu">
 

@@ -8,6 +8,6 @@ use Core\Controller;
 class UserController extends Controller
 {
     public function addAction(){
-        echo "add de UserController \n ";
+        $this->render('register');
     }
 }
