@@ -11,3 +11,8 @@ Router::connect ('/register', [
     'action'=> 'add'
 ]);
 
+Router::connect ('/register_new', [
+    'controller'=>'user',
+    'action'=> 'register'
+]);
+

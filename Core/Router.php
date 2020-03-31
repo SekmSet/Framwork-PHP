@@ -5,7 +5,7 @@ namespace Core;
 class Router
 {
 
-    private static $base_uri = 'MVC_PiePHP/';
+   // private static $base_uri = 'MVC_PiePHP/';
     private static $routes = [
         /*'/' => [
             'controller' => 'app',
@@ -24,7 +24,7 @@ class Router
     public static function get($url)
     {
         print_r(self::$routes);
-        $action = str_replace(self::$base_uri, '', trim($url));
+        $action = str_replace(BASE_URI, '', trim($url));
 
         if(!isset(self::$routes[$action])) {
             $route = [
