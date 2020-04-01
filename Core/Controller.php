@@ -6,6 +6,16 @@ class Controller
 {
     protected static $_render;
 
+    /**
+     * @var Request
+     */
+    protected $request;
+
+    public function __construct()
+    {
+        $this->request = new Request();
+    }
+
     public function __destruct()
     {
         echo self::$_render;

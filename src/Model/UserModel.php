@@ -29,26 +29,18 @@ class UserModel
     }
 
     public function save(){
-    //        ajoute un enregistrement en BDD avec les attributs du model
-
-//        $this->email = $email;
-//        $this->password = $password;
         $request = $this->pdo->prepare('INSERT INTO user (email, password) VALUES (:email, :password)');
         $request->bindParam(':email', $this->email);
         $request->bindParam(':password', $this->password);
         $request->execute();
 
         return [
-            'email'=> $this->email,
-            'password'=> $this->password
+            'email' => $this->email,
+            'password' => $this->password
         ];
     }
 
     public function read($id){
-        //        ajoute un enregistrement en BDD avec les attributs du model
-
-//        $this->email = $email;
-//        $this->password = $password;
         $request = $this->pdo->prepare('select * from user where id = :id');
         $request->bindParam(':email', $id);
         $request->fetch();
@@ -59,10 +51,6 @@ class UserModel
         ];
     }
     public function read_all(){
-        //        ajoute un enregistrement en BDD avec les attributs du model
-
-//        $this->email = $email;
-//        $this->password = $password;
         $request = $this->pdo->prepare('select * from user');
         $request->fetchAll();
 
@@ -73,10 +61,6 @@ class UserModel
     }
 
     public function update(){
-        //        ajoute un enregistrement en BDD avec les attributs du model
-
-//        $this->email = $email;
-//        $this->password = $password;
         $request = $this->pdo->prepare('update user set email = :email, password = :password where id = :id');
         $request->bindParam(':email', $this->email);
         $request->bindParam(':password', $this->password);
@@ -90,10 +74,6 @@ class UserModel
     }
 
     public function delete(){
-        //        ajoute un enregistrement en BDD avec les attributs du model
-
-//        $this->email = $email;
-//        $this->password = $password;
         $request = $this->pdo->prepare('delete from user where id = :id');
         $request->bindParam(':id', $this->id);
          $request->execute();
