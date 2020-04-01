@@ -5,11 +5,13 @@ use Core\Controller;
 
 class AppController extends Controller
 {
-    public function indexAction() {
+    public function indexAction()
+    {
         echo "add new controller :  AppController \n ";
     }
 
-    public function notFoundAction() {
+    public function notFoundAction()
+    {
         echo "Page 404 \n ";
     }
 }

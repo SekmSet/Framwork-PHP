@@ -17,7 +17,8 @@ class Router
         ],*/
     ];
 
-    public static function connect($url, $route){
+    public static function connect($url, $route)
+    {
         self::$routes[$url] = $route;
     }
 
@@ -26,7 +27,7 @@ class Router
         print_r(self::$routes);
         $action = str_replace(BASE_URI, '', trim($url));
 
-        if(!isset(self::$routes[$action])) {
+        if (!isset(self::$routes[$action])) {
             $route = [
                 'controller' => 'app',
                 'action' => 'notFound'
@@ -44,5 +45,3 @@ class Router
         call_user_func_array([$controller, $method], []);
     }
 }
-
-

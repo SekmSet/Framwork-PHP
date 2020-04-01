@@ -15,7 +15,7 @@ class Database
         $user = 'root';
         $password = 'Obrigada';
 
-        if (!isset(self::$instance)){
+        if (!isset(self::$instance)) {
             try {
                 self::$instance = new PDO($dsn, $user, $password);
             } catch (PDOException $e) {

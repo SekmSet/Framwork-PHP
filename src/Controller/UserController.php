@@ -2,18 +2,18 @@
 
 namespace Controller;
 
-
 use Core\Controller;
 use Model\UserModel;
 
 class UserController extends Controller
 {
-
-    public function addAction(){
+    public function addAction()
+    {
         $this->render('register');
     }
 
-    public function registerAction(){
+    public function registerAction()
+    {
         echo "registerAction";
 //        $this->render('register');
 
