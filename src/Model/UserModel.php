@@ -3,9 +3,10 @@
 namespace Model;
 
 use Core\Database;
+use Core\Entity;
 use PDO;
 
-class UserModel
+class UserModel extends Entity
 {
     /**
      * @var PDO
