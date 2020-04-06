@@ -28,15 +28,6 @@ class Entity
             $orm = new ORM();
             $result = $orm->read('users', $id);
 
-            print_r($result);
-
-            foreach ($result[0] as $key => $value){
-                if($key === 'id'){
-                    echo 'unset';
-                    unset($result[0][$key]);
-                }
-            }
-            print_r($result);
             $this->param_to_attribut($result[0]);
         }
         $this->param_to_attribut($params);
@@ -50,7 +41,5 @@ class Entity
         foreach ($params as $key => $value) {
             $this->$key = $value;
         }
-
     }
-
 }

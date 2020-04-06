@@ -34,12 +34,9 @@ class UserController extends Controller
 //            'password' => 'azera'
 //        ]);
 
-        //$params = $this->request->getQueryParams();
-
-        $params = ['id' => 5];
+        $params = $this->request->getQueryParams();
+//        $params = ['id' => 15];
         $user = new UserModel($params);
-        print_r($user);
-
         if (!$user->id) {
             $user->save() ;
             self::$_render = 'Votre compte a ete cree.' .PHP_EOL;
