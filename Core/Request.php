@@ -4,21 +4,30 @@ namespace Core;
 
 class Request
 {
-    public function http_post_request($post)
+    public function getQueryParams(): array
     {
-        $post = trim($_POST[$post]);
-        $post = stripslashes($post);
-        $post = htmlspecialchars($post);
 
-        return $post;
+         $post = $_POST;
+
+        return $this->secure_request($post);
     }
 
-    public function http_get_request($get)
+    public function http_get_request()
     {
-        $get = trim($_POST[$get]);
-        $get = stripslashes($get);
-        $get = htmlspecialchars($get);
+        $get = $_GET;
+        return $this->secure_request($get);
 
-        return $get;
+    }
+
+    /**
+     * @param $post
+     * @return mixed
+     */
+    private function secure_request($post)
+    {
+        foreach ($post as $key => $value) {
+            $post[$key] = htmlspecialchars(stripslashes(trim($value)));
+        }
+         return $post;
     }
 }

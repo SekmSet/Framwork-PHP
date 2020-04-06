@@ -18,7 +18,6 @@ namespace Core;
 
      public function create($table, $fields) : int
      {
-
          [$key_fields, $value_fields] = $this->organize_fields($fields);
 
          $request = $this->pdo->prepare("INSERT INTO $table ($key_fields) VALUES ($value_fields)");
@@ -33,7 +32,7 @@ namespace Core;
          $request = $this->pdo->prepare("select * from $table where id = :id");
          $request->bindParam(':id', $id);
          $request->execute();
-         return $request->fetchAll();
+         return $request->fetchAll(PDO::FETCH_ASSOC);
      }
 
      public function update($table, $id, $fields) : bool
@@ -128,6 +127,6 @@ namespace Core;
              $wheres[] = $key . ' = ' . '\'' . $val . '\'';
          }
 
-          return implode(',', $wheres);
+         return implode(',', $wheres);
      }
  }

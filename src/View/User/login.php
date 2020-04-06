@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <header><h1>Un titre</h1></header>
+    <header><h1>LOGIN</h1></header>
     <div>
         <form method="post" action="../../../index.php">
             <label for="email">Email</label>

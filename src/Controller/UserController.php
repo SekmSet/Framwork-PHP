@@ -13,23 +13,36 @@ class UserController extends Controller
         $this->render('register');
     }
 
+    public function loginAction()
+    {
+        $this->render('login');
+    }
+
     public function registerAction()
     {
-        echo "registerAction";
+        echo 'registerAction';
 //        $this->render('register');
 
-        $email = $this->request->http_post_request('email');
-        $password = $this->request->http_post_request('password');
+//        $email = $this->request->getQueryParams();
+//        $password = $this->request->getQueryParams();
 
-        $user_add = new UserModel($email, $password);
-        $orm = new ORM();
-        $result = $orm->update('user',107, [
-            'email' => 'tat@tt.tt',
-            'password' => 'azera'
-        ]);
 
-        var_dump($result);
+//        $user_add = new UserModel($params);
+//        $orm = new ORM();
+//        $result = $orm->update('user', 107, [
+//            'email' => 'tat@tt.tt',
+//            'password' => 'azera'
+//        ]);
 
-        $user_add->save();
+        //$params = $this->request->getQueryParams();
+
+        $params = ['id' => 5];
+        $user = new UserModel($params);
+        print_r($user);
+
+        if (!$user->id) {
+            $user->save() ;
+            self::$_render = 'Votre compte a ete cree.' .PHP_EOL;
+        }
     }
 }
