@@ -6,9 +6,7 @@ class Request
 {
     public function getQueryParams(): array
     {
-
-         $post = $_POST;
-
+        $post = $_POST;
         return $this->secure_request($post);
     }
 
@@ -16,7 +14,6 @@ class Request
     {
         $get = $_GET;
         return $this->secure_request($get);
-
     }
 
     /**
@@ -28,6 +25,6 @@ class Request
         foreach ($post as $key => $value) {
             $post[$key] = htmlspecialchars(stripslashes(trim($value)));
         }
-         return $post;
+        return $post;
     }
 }

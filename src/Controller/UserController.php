@@ -42,4 +42,9 @@ class UserController extends Controller
             self::$_render = 'Votre compte a ete cree.' .PHP_EOL;
         }
     }
+
+    public function show($id): void
+    {
+        echo " ID de l'utilisateur a afficher : $id " . PHP_EOL;
+    }
 }
