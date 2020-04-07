@@ -43,7 +43,7 @@ class UserController extends Controller
         }
     }
 
-    public function show($id): void
+    public function showAction($id): void
     {
         echo " ID de l'utilisateur a afficher : $id " . PHP_EOL;
     }
