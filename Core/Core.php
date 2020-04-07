@@ -13,7 +13,7 @@ class Core
         $uri = $_SERVER['REQUEST_URI'];
         Router::get($uri);
 
-        echo __CLASS__ . ' [ OK ]' . PHP_EOL ;
+        //echo __CLASS__ . ' [ OK ]' . PHP_EOL ;
 
         /* $uri = $_SERVER['REQUEST_URI'];
          $array_uri=explode('/',$uri);
