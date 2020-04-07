@@ -4,7 +4,10 @@ namespace Core;
 
 class Controller
 {
-    protected static $_render;
+    /**
+     * @var string
+     */
+    private static $_render;
 
     /**
      * @var Request
@@ -21,28 +24,16 @@ class Controller
         echo self::$_render;
     }
 
-    protected function render($view, $scope=[])
+    protected function render(string $view, array $scope=[])
     {
-        extract($scope);
-        $f = implode(DIRECTORY_SEPARATOR, [
-            dirname(__DIR__),
-            'src',
-            'View',
-            trim(str_replace('Controller', '', basename(get_class($this))), '\\'),
-            $view
-        ]). '.php';
-        if (file_exists($f)) {
-            ob_start();
-            include($f) ;
-            $view = ob_get_clean();
-            ob_start();
-            include(implode(DIRECTORY_SEPARATOR, [
+        $file = implode(DIRECTORY_SEPARATOR, [
                 dirname(__DIR__),
                 'src',
                 'View',
-                'index'
-            ]). '.php');
-            self::$_render = ob_get_clean();
-        }
+                trim(str_replace('Controller', '', basename(get_class($this))), '\\'),
+                $view
+            ]). '.php';
+        $tpl = new TemplateEngine($file, $scope);
+        self::$_render = $tpl->render();
     }
 }

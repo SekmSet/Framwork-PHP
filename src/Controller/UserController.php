@@ -39,12 +39,14 @@ class UserController extends Controller
         $user = new UserModel($params);
         if (!$user->id) {
             $user->save() ;
-            self::$_render = 'Votre compte a ete cree.' .PHP_EOL;
+            echo 'Votre compte a ete cree.' .PHP_EOL;
         }
     }
 
     public function showAction($id): void
     {
-        echo " ID de l'utilisateur a afficher : $id " . PHP_EOL;
+        $this->render('show', [
+            'id' => $id
+        ]);
     }
 }
