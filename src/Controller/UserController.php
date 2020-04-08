@@ -45,8 +45,18 @@ class UserController extends Controller
 
     public function showAction($id): void
     {
+        $user1 = new \stdClass();
+        $user1->id=1;
+        $user1->name='bobo';
+
+        $user2 = new \stdClass();
+        $user2->id=2;
+        $user2->name='bobi';
+
         $this->render('show', [
-            'id' => $id
+            'id' => (int)$id,
+            'var' => '',
+            'users' => [ $user1,$user2 ]
         ]);
     }
 }
