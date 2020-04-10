@@ -13,7 +13,7 @@ namespace Model;
 
      public function save(): array
      {
-         $request = $this->pdo->prepare('INSERT INTO users (email, password) VALUES (:email, :password)');
+         $request = $this->pdo->prepare('INSERT INTO fiche_personne (email, password) VALUES (:email, :password)');
          $request->bindParam(':email', $this->email);
          $request->bindParam(':password', $this->password);
          $request->execute();
@@ -26,7 +26,7 @@ namespace Model;
 
      public function read($id): array
      {
-         $request = $this->pdo->prepare('select * from users where id = :id');
+         $request = $this->pdo->prepare('select * from fiche_personne where id = :id');
          $request->bindParam(':email', $id);
          $request->fetch();
 
@@ -37,7 +37,7 @@ namespace Model;
      }
      public function read_all(): array
      {
-         $request = $this->pdo->prepare('select * from users');
+         $request = $this->pdo->prepare('select * from fiche_personne');
          $request->fetchAll();
 
          return [
@@ -48,7 +48,7 @@ namespace Model;
 
      public function update(): array
      {
-         $request = $this->pdo->prepare('update users set email = :email, password = :password where id = :id');
+         $request = $this->pdo->prepare('update fiche_personne set email = :email, password = :password where id = :id');
          $request->bindParam(':email', $this->email);
          $request->bindParam(':password', $this->password);
          $request->bindParam(':id', $this->id);
@@ -62,7 +62,7 @@ namespace Model;
 
      public function delete(): array
      {
-         $request = $this->pdo->prepare('delete from users where id = :id');
+         $request = $this->pdo->prepare('delete from fiche_personne where id = :id');
          $request->bindParam(':id', $this->id);
          $request->execute();
 

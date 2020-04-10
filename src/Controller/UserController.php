@@ -59,4 +59,22 @@ class UserController extends Controller
             'users' => [ $user1,$user2 ]
         ]);
     }
+
+    public function show_profilAction()
+    {
+        $id=2;
+        $profil = new ORM();
+        $profil->read('fiche_personne', $id);
+        $this->render('profil');
+    }
+
+    public function memberAction()
+    {
+        $profil = new ORM();
+        $all_members = $profil->read_all('fiche_personne');
+
+        $this->render('member', [
+            'all_members' => $all_members
+        ]);
+    }
 }

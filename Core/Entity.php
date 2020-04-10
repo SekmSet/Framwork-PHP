@@ -19,7 +19,7 @@ class Entity
      * Entity constructor.
      * @param array $params
      */
-    public function __construct(array $params)
+    public function __construct(array $params = [])
     {
         $this->pdo = Database::databse_connexion();
 

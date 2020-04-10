@@ -11,7 +11,7 @@ class Database
 
     public static function databse_connexion()
     {
-        $dsn = 'mysql:dbname=pie_php;host=127.0.0.1';
+        $dsn = 'mysql:dbname=cinema;host=127.0.0.1';
         $user = 'root';
         $password = 'Obrigada';
 

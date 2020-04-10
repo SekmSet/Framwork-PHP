@@ -17,7 +17,7 @@ class TemplateEngine
      * @var array
      */
     private $tags = [
-        '\{\{([^}]*)\}\}' => '<?= htmlentities($1) ?>',
+        '\{\{([^}]*)\}\}' => "<?= htmlentities($1) ?>",
         '@if(.*)' => '<?php if $1 : ?>',
         '@elseif(.*)' => '<?php elseif $1 : ?>',
         '@else' => '<?php else : ?>',
@@ -26,7 +26,6 @@ class TemplateEngine
         '@endforeach' => '<?php endforeach ?>',
         '@empty(.*)' => '<?php if (empty $1) : ?>',
         '@isset(.*)' => '<?php if (isset $1) : ?>',
-
     ];
 
     /**
@@ -45,13 +44,10 @@ class TemplateEngine
         extract($this->scope);
 
         if (file_exists($this->view)) {
-
-            // Generate layout
             ob_start();
             include($this->view) ;
             $view = ob_get_clean();
 
-            // Generate view
             ob_start();
             include(implode(DIRECTORY_SEPARATOR, [
                     dirname(__DIR__),
@@ -62,7 +58,6 @@ class TemplateEngine
 
             $result = ob_get_clean();
 
-            // Add templating
             ob_start();
             foreach ($this->tags as $key => $value) {
                 $result = preg_replace('/'.$key.'/', $value, $result);
@@ -70,11 +65,11 @@ class TemplateEngine
 
             if (!empty($result)) {
                 eval("?> $result");
-
-//                echo $result;
             }
-
+//            echo $result;
             return ob_get_clean();
+        } else {
+            echo 'Tu es vraiment null, regarde le nom de tes dossiers, fichiers … THALOOPE !!! ' . $this->view . ' Enfant con.' .PHP_EOL;
         }
         return '';
     }

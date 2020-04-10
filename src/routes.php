@@ -25,4 +25,39 @@ Router::connect('/login', [
 Router::connect('/user/:id', [
     'controller' => 'user',
     'action' => 'show'
-]) ;
+]);
+
+Router::connect('/profil', [
+    'controller' => 'user',
+    'action' => 'show_profil'
+]);
+
+Router::connect('/members', [
+    'controller' => 'user',
+    'action' => 'member'
+]);
+
+Router::connect('/subscription', [
+    'controller' => 'price',
+    'action' => 'subscription'
+]);
+
+Router::connect('/prices', [
+    'controller' => 'price',
+    'action' => 'reduction'
+]);
+
+Router::connect('/movies', [
+    'controller' => 'movie',
+    'action' => 'movie'
+]);
+
+Router::connect('/movies/:name', [
+    'controller' => 'movie',
+    'action' => 'movieGender'
+]);
+
+Router::connect('/history', [
+    'controller' => 'movie',
+    'action' => 'history'
+]);
