@@ -8,38 +8,38 @@ Router::connect('/', [
 ]);
 
 Router::connect('/register', [
-    'controller'=>'user',
-    'action'=> 'add'
+    'controller' => 'user',
+    'action' => 'add'
 ]);
 
 Router::connect('/register_new', [
-    'controller'=>'user',
-    'action'=> 'register'
+    'controller' => 'user',
+    'action' => 'register'
 ]);
 
 Router::connect('/login', [
-    'controller'=>'user',
-    'action'=> 'login'
+    'controller' => 'user',
+    'action' => 'login'
 ]);
 
 Router::connect('/login_check', [
-    'controller'=>'user',
-    'action'=> 'loginCheck'
+    'controller' => 'user',
+    'action' => 'loginCheck'
 ]);
 
 Router::connect('/profil/changes', [
-    'controller'=>'user',
-    'action'=> 'changes'
+    'controller' => 'user',
+    'action' => 'changes'
 ]);
 
 Router::connect('/logout', [
-    'controller'=>'user',
-    'action'=> 'logout'
+    'controller' => 'user',
+    'action' => 'logout'
 ]);
 
 Router::connect('/profil/delete', [
-    'controller'=>'user',
-    'action'=> 'delete'
+    'controller' => 'user',
+    'action' => 'delete'
 ]);
 
 Router::connect('/user/:id', [

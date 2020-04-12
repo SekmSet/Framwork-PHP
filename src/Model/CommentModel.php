@@ -7,10 +7,10 @@ use Core\Entity;
 
 class CommentModel extends Entity
 {
-    protected $table = 'commentaires';
+    public static $relations = ['has one article'];
 
     // 1 commantaire pour 1 article = one to one
-    public static $relations = ['has one article'];
+    protected $table = 'commentaires';
 
     public function article_comment($id)
     {

@@ -1,12 +1,12 @@
 <h1>Connexion</h1></>
 <div>
     @notempty($errors)
-        @foreach ($errors as $value)
-            {{$value}}
-        @endforeach
+    @foreach ($errors as $value)
+    {{$value}}
+    @endforeach
     @endempty
 
-    <form method="post" action="<?= BASE_URI?>/login_check">
+    <form method="post" action="<?= BASE_URI ?>/login_check">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="priscilla.joly@epitech.eu">
 

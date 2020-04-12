@@ -19,7 +19,6 @@ class Entity
     protected $table = '';
 
 
-
     /**
      * Entity constructor.
      * @param array $params

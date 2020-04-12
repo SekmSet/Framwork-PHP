@@ -10,12 +10,6 @@ class Request
         return $this->secure_request($post);
     }
 
-    public function http_get_request()
-    {
-        $get = $_GET;
-        return $this->secure_request($get);
-    }
-
     /**
      * @param $post
      * @return mixed
@@ -26,5 +20,11 @@ class Request
             $post[$key] = htmlspecialchars(stripslashes(trim($value)));
         }
         return $post;
+    }
+
+    public function http_get_request()
+    {
+        $get = $_GET;
+        return $this->secure_request($get);
     }
 }

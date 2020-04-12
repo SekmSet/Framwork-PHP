@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 class TemplateEngine
@@ -36,7 +37,7 @@ class TemplateEngine
      * @param $view
      * @param array $scope
      */
-    public function __construct(string $view, array $scope=[])
+    public function __construct(string $view, array $scope = [])
     {
         $this->view = $view;
         $this->scope = $scope;
@@ -48,7 +49,7 @@ class TemplateEngine
 
         if (file_exists($this->view)) {
             ob_start();
-            include($this->view) ;
+            include($this->view);
             $view = ob_get_clean();
 
             ob_start();
@@ -57,23 +58,21 @@ class TemplateEngine
                     'src',
                     'View',
                     'index'
-                ]). '.php');
+                ]) . '.php');
 
             $result = ob_get_clean();
 
             ob_start();
             foreach ($this->tags as $key => $value) {
-                $result = preg_replace('/'.$key.'/', $value, $result);
+                $result = preg_replace('/' . $key . '/', $value, $result);
             }
 
             if (!empty($result)) {
                 eval("?> $result");
             }
-//            echo $result;
             return ob_get_clean();
-        } else {
-            echo 'Tu es vraiment null, regarde le nom de tes dossiers, fichiers … THALOOPE !!! ' . $this->view . ' Enfant con.' .PHP_EOL;
         }
-        return '';
+
+        return 'Tu es vraiment null, regarde le nom de tes dossiers, fichiers … THALOOPE !!! ' . $this->view . ' Enfant con.' . PHP_EOL;
     }
 }

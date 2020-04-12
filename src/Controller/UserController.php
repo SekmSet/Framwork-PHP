@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function loginCheckAction()
     {
-        $errors =[];
+        $errors = [];
 
         $params = $this->request->getQueryParams();
         $user = new UserModel($params);
@@ -29,11 +29,11 @@ class UserController extends Controller
         if ($user->login()) {
             $_SESSION['user_id'] = $user->id_perso;
             $_SESSION['nom'] = $user->nom;
-            header('location: '.BASE_URI.'/profil');
+            header('location: ' . BASE_URI . '/profil');
             die;
         }
 
-        $errors[]='Aucun utilisateur trouvé, veuillez vérifier l\'adresse mail ou le mot de passe ! ';
+        $errors[] = 'Aucun utilisateur trouvé, veuillez vérifier l\'adresse mail ou le mot de passe ! ';
         $this->render('login', [
             'errors' => $errors
         ]);
@@ -41,7 +41,7 @@ class UserController extends Controller
 
     public function registerAction()
     {
-        $errors=[];
+        $errors = [];
 
         $params = $this->request->getQueryParams();
         $user = new UserModel($params);
@@ -60,12 +60,12 @@ class UserController extends Controller
         if (empty($id_user)) {
             $errors[] = "Un problème est surevenu lors de votre enregistrment, merci de reéssayer plus tard";
             $this->render('register', [
-                'errrors' =>$errors
+                'errrors' => $errors
             ]);
             return;
         }
 
-        header('location: '.BASE_URI.'/login');
+        header('location: ' . BASE_URI . '/login');
         die;
     }
 
@@ -95,7 +95,7 @@ class UserController extends Controller
     public function logoutAction()
     {
         session_destroy();
-        header('location: '.BASE_URI.'/');
+        header('location: ' . BASE_URI . '/');
         die;
     }
 
@@ -118,7 +118,7 @@ class UserController extends Controller
         $user->pays = $params['pays'];
         $user->update();
 
-        header('location: '.BASE_URI.'/profil');
+        header('location: ' . BASE_URI . '/profil');
         die;
     }
 
@@ -132,7 +132,7 @@ class UserController extends Controller
         $user->delete();
 
         session_destroy();
-        header('location: '.BASE_URI.'/');
+        header('location: ' . BASE_URI . '/');
         die;
     }
 }

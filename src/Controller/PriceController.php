@@ -4,9 +4,7 @@
 namespace Controller;
 
 use Core\Controller;
-use Core\ORM;
 use Model\PriceModel;
-use Model\UserModel;
 
 class PriceController extends Controller
 {

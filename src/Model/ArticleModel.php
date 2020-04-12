@@ -7,14 +7,13 @@ use Core\Entity;
 
 class ArticleModel extends Entity
 {
-    protected $table = 'articles';
-
-    // Plusieurs commantaire pour 1 artcile = Many to one || One to many
-
     public static $relations = [
         'has many comments',
         'has many tags'
     ];
+
+    // Plusieurs commantaire pour 1 artcile = Many to one || One to many
+    protected $table = 'articles';
 
     public function get_all_comments($article_id): array
     {

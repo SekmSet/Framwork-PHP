@@ -4,22 +4,7 @@ namespace Core;
 
 class Router
 {
-
-   // private static $base_uri = 'MVC_PiePHP/';
-    private static $routes = [
-        /*'/' => [
-            'controller' => 'app',
-            'action' => 'index'
-        ],
-        '/register' => [
-            'controller' => 'app',
-            'action' => 'index'
-        ],
-        '/user/([^/]+)' => [
-            'controller' => 'app',
-            'action' => 'index'
-        ],*/
-    ];
+    private static $routes = [];
 
     public static function connect($url, $route)
     {
@@ -49,7 +34,6 @@ class Router
     private static function match($url)
     {
         $action = str_replace(BASE_URI, '', trim($url));
-
 
         foreach (self::$routes as $path => $param) {
             $regex = "#^$path$#i";

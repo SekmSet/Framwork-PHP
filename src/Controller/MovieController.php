@@ -6,7 +6,6 @@ use Core\Controller;
 use Core\ORM;
 use Model\MovieModel;
 use Model\SalleModel;
-use Model\UserModel;
 
 class MovieController extends Controller
 {
@@ -14,7 +13,7 @@ class MovieController extends Controller
     {
         $this->user_is_log();
 
-        $user_id=$_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
         $history = new MovieModel();
         $my_history = $history->historique($user_id);
 
@@ -26,7 +25,7 @@ class MovieController extends Controller
     public function movieAction()
     {
         $movies = new ORM();
-        $all_movies= $movies->read_all('film');
+        $all_movies = $movies->read_all('film');
 
         $this->render('movies', [
             'all_movies' => $all_movies
@@ -35,18 +34,18 @@ class MovieController extends Controller
 
     public function movieGenderAction($name)
     {
-        $errors=[];
+        $errors = [];
         $name = urldecode($name);
         $movies_gender = new MovieModel();
         $info = $movies_gender->gender_by_movie($name);
 
         if ($info === false) {
-            $errors[]="Film invalide";
+            $errors[] = "Film invalide";
         }
 
         $this->render('movie_gender', [
             'info' => $info,
-            'errors'=> $errors
+            'errors' => $errors
         ]);
     }
 
@@ -54,7 +53,7 @@ class MovieController extends Controller
     {
         $name = urldecode($name);
         $seance = new MovieModel();
-        $seances = $seance-> movie_show($name);
+        $seances = $seance->movie_show($name);
 
         $this->render('movie_show', [
             'seances' => $seances

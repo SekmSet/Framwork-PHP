@@ -32,7 +32,7 @@ class Controller
         }
     }
 
-    protected function render(string $view, array $scope=[])
+    protected function render(string $view, array $scope = [])
     {
         $file = implode(DIRECTORY_SEPARATOR, [
                 dirname(__DIR__),
@@ -40,7 +40,7 @@ class Controller
                 'View',
                 trim(str_replace('Controller', '', basename(get_class($this))), '\\'),
                 $view
-            ]). '.php';
+            ]) . '.php';
         $tpl = new TemplateEngine($file, $scope);
         self::$_render = $tpl->render();
     }

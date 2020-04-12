@@ -7,15 +7,14 @@ use Core\Entity;
 
 class MemberModel extends Entity
 {
-    protected $primary_key = 'id_membre';
-    protected $table = 'membre';
-
     public $id_fiche_perso;
     public $id_abo;
     public $date_abo;
     public $id_dernier_film;
     public $date_dernier_film;
     public $date_inscription;
+    protected $primary_key = 'id_membre';
+    protected $table = 'membre';
 
     public function save()
     {
