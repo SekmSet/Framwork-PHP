@@ -1,1 +1,1 @@
-<?php
+<img src="<?= BASE_URI ?>/webroot/assets/404.jpg" alt="page not found">

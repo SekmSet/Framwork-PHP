@@ -19,8 +19,8 @@ class Router
 
         if ($match === false) {
             $route = [
-                'controller' => 'app',
-                'action' => 'notFound',
+                'controller' => 'error',
+                'action' => 'error404',
             ];
             $args = [];
         } else {

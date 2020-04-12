@@ -1,18 +1,18 @@
-<h1>Connexion</h1></>
-<div>
-    @notempty($errors)
+@notempty($errors)
+<div class="alert alert-danger" role="alert">
     @foreach ($errors as $value)
     {{$value}}
     @endforeach
-    @endempty
-
-    <form method="post" action="<?= BASE_URI ?>/login_check">
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email" placeholder="priscilla.joly@epitech.eu">
-
-        <label for="mdp">Passeword</label>
-        <input type="password" name="mdp" id="mdp">
-
-        <button>Envoyer</button>
-    </form>
 </div>
+@endempty
+
+
+<form class="form-signin" method="post" action="<?= BASE_URI ?>/login_check">
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="mdp" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Envoyer</button>
+</form>

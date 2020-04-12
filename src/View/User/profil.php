@@ -14,27 +14,38 @@
 <p>Ville : {{$info['ville']}}</p>
 <p>Pays : {{$info['pays']}}</p>
 
-<form action="<?= BASE_URI ?>/profil/changes" method="post" id="form_change_profil">
+<form class="form-signin" method="post" action="<?= BASE_URI ?>/profil/changes" id="form_change_profil">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" class="form-control" placeholder="Joly" name="nom" required autofocus value="{{$info['nom']}}">
 
-    <label for="nom">Nom : <input type="text" name="nom" id="nom_profil" value="{{$info['nom']}}"></label>
-    <label for="prenom">Prenom : <input type="text" name="prenom" id="prenom_profil"
-                                        value="{{$info['prenom']}}"></label>
-    <label for="email">Email : <input type="text" name="email" id="email_profil" value="{{$info['email']}}"></label>
-    <label for="date_naissance">Date de naissance :<input type="text" name="date_naissance" id="date_naissance"
-                                                          value="{{$info['date_naissance']}}"></label>
-    <label for="adresse">Adresse : <input type="text" name="adresse" id="adresse_profil"
-                                          value="{{$info['adresse']}}"></label>
-    <label for="cpostal">Code postal : <input type="text" name="cpostal" id="cpostal_profil"
-                                              value="{{$info['cpostal']}}"></label>
-    <label for="ville">Ville : <input type="text" name="ville" id="ville_profil" value="{{$info['ville']}}"></label>
-    <label for="pays">Pays : <input type="text" name="pays" id="pays_profil" value="{{$info['pays']}}"></label>
+    <label for="prenom">Prenom</label>
+    <input type="text" id="prenom" class="form-control" placeholder="Priscilla" name="prenom" required value="{{$info['prenom']}}">
 
-    <button id="validate_button_profil"> Valider</button>
+    <label for="email">Email</label>
+    <input type="email" id="email" class="form-control" placeholder="prisclla.joly@orange.fr" name="email" required value="{{$info['email']}}">
+
+    <label for="date_naissance">Date de naissance</label>
+    <input type="date" id="date_naissance" class="form-control" placeholder="11/03/1995" name="date_naissance" required value="{{$info['date_naissance']}}">
+
+    <label for="adresse">Adresse</label>
+    <input type="text" id="adresse" class="form-control" placeholder="56 rue abbe boisard " name="adresse" required value="{{$info['adresse']}}">
+
+    <label for="cpostal">Code postal</label>
+    <input type="text" id="cpostal" class="form-control" placeholder="69003" name="cpostal" required value="{{$info['cpostal']}}">
+
+    <label for="ville">Ville</label>
+    <input type="text" id="ville" class="form-control" placeholder="Lyon" name="ville" required value="{{$info['ville']}}">
+
+    <label for="pays">Pays</label>
+    <input type="text" id="pays" class="form-control" placeholder="France" name="pays" required value="{{$info['pays']}}">
+
+    <hr>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Envoyer</button>
 </form>
 
-<form>
-    <button id="button_changes_profil">Modifier mon profil</button>
-</form>
+<button id="button_changes_profil">Modifier mon profil</button>
+
 
 <form action="<?= BASE_URI ?>/profil/delete" id="delete_account">
     <button id="button_delete_profil">Supprimer mon profil</button>

@@ -1,1 +1,1 @@
-<h2>HOME</h2>
+<img src="<?= BASE_URI?>/webroot/assets/home.jpeg" alt="home">
