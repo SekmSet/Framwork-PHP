@@ -12,6 +12,8 @@ class MovieController extends Controller
 {
     public function historyAction()
     {
+        $this->user_is_log();
+
         $user_id=$_SESSION['user_id'];
         $history = new MovieModel();
         $my_history = $history->historique($user_id);
@@ -33,12 +35,18 @@ class MovieController extends Controller
 
     public function movieGenderAction($name)
     {
+        $errors=[];
         $name = urldecode($name);
         $movies_gender = new MovieModel();
         $info = $movies_gender->gender_by_movie($name);
 
+        if ($info === false) {
+            $errors[]="Film invalide";
+        }
+
         $this->render('movie_gender', [
-            'info' => $info
+            'info' => $info,
+            'errors'=> $errors
         ]);
     }
 

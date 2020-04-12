@@ -43,8 +43,6 @@ namespace Model;
          $request->execute();
 
          return $this->pdo->lastInsertId();
-
-
      }
 
      public function login(): bool
@@ -72,7 +70,6 @@ namespace Model;
          $request->bindParam(':id_perso', $id_perso);
          $request->execute();
          return $request->fetch();
-
      }
 
      public function read_all(): array

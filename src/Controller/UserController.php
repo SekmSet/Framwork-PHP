@@ -4,6 +4,7 @@ namespace Controller;
 
 use Core\Controller;
 use Core\ORM;
+use Model\MemberModel;
 use Model\UserModel;
 
 class UserController extends Controller
@@ -44,13 +45,21 @@ class UserController extends Controller
 
         $params = $this->request->getQueryParams();
         $user = new UserModel($params);
-
         $id_user = $user->save();
 
+        $membre = new MemberModel([
+            'id_fiche_perso' => $id_user,
+            'id_abo' => null,
+            'date_abo' => null,
+            'id_dernier_film' => null,
+            'date_dernier_film' => null,
+            'date_inscription' => (new \DateTime())->format("Y-m-d H:i:s")
+        ]);
+        $membre->save();
 
-        if(empty($id_user)){
+        if (empty($id_user)) {
             $errors[] = "Un problème est surevenu lors de votre enregistrment, merci de reéssayer plus tard";
-            $this->render('register',[
+            $this->render('register', [
                 'errrors' =>$errors
             ]);
             return;
@@ -90,7 +99,8 @@ class UserController extends Controller
         die;
     }
 
-    public function changesAction(){
+    public function changesAction()
+    {
         $this->user_is_log();
 
         $params = $this->request->getQueryParams();

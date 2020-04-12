@@ -7,7 +7,6 @@ use Core\Entity;
 
 class PriceModel extends Entity
 {
-
     public function get_reduction()
     {
         $request = $this->pdo->query("select * from reduction");

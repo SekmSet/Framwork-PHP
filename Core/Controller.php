@@ -44,6 +44,4 @@ class Controller
         $tpl = new TemplateEngine($file, $scope);
         self::$_render = $tpl->render();
     }
-
-
 }

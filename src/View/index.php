@@ -17,7 +17,6 @@
                 <ul>
                     <li><a href="<?= BASE_URI?>/movies">Films</a></li>
                     <li><a href="<?= BASE_URI?>/salle">Salles</a></li>
-                    <li><a href="<?= BASE_URI?>/history">Historique</a></li>
                     <li><a href="<?= BASE_URI?>/subscription">Abonnement</a></li>
                     <li><a href="<?= BASE_URI?>/prices">Tarif</a></li>
                     <li><a href="<?= BASE_URI?>/job">Recrutement</a></li>
@@ -27,6 +26,7 @@
                     <li><a href="<?= BASE_URI?>/register">Inscription</a></li>
                     @else
                     <li><a href="<?= BASE_URI?>/profil">Profil</a></li>
+                    <li><a href="<?= BASE_URI?>/history">Mon historique film</a></li>
                     <li><a href="<?= BASE_URI?>/logout">Déconnexion</a></li>
                     @endislog
                 </ul>

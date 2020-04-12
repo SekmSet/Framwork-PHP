@@ -11,7 +11,7 @@ class Core
         include('src/routes.php');
 
         $uri = $_SERVER['REQUEST_URI'];
-        $uri_array = explode('?',$uri);
+        $uri_array = explode('?', $uri);
 
 
         Router::get($uri_array[0]);

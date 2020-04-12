@@ -21,16 +21,16 @@ class MovieModel extends Entity
         return $request->fetch();
     }
 
-    public function historique($id_membre)
+    public function historique($id_perso)
     {
         $request = $this->pdo->prepare("select * from fiche_personne
-                inner join membre on fiche_personne.id_perso = membre.id_membre
+                inner join membre on fiche_personne.id_perso = membre.id_fiche_perso
                 inner join historique_membre on membre.id_membre = historique_membre.id_membre
                 inner join film on historique_membre.id_film = film.id_film
-            where historique_membre.id_membre = :id_membre");
+            where fiche_personne.id_perso = :id_perso");
 
         $request->execute([
-            'id_membre' => $id_membre
+            'id_perso' => $id_perso
         ]);
 
         return $request->fetchAll();
