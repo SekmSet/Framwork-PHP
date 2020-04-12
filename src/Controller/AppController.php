@@ -7,7 +7,7 @@ class AppController extends Controller
 {
     public function indexAction()
     {
-        echo "add new controller :  AppController \n ";
+        $this->render('home');
     }
 
     public function notFoundAction()

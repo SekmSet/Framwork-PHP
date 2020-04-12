@@ -27,6 +27,21 @@ Router::connect('/login_check', [
     'action'=> 'loginCheck'
 ]);
 
+Router::connect('/profil/changes', [
+    'controller'=>'user',
+    'action'=> 'changes'
+]);
+
+Router::connect('/logout', [
+    'controller'=>'user',
+    'action'=> 'logout'
+]);
+
+Router::connect('/profil/delete', [
+    'controller'=>'user',
+    'action'=> 'delete'
+]);
+
 Router::connect('/user/:id', [
     'controller' => 'user',
     'action' => 'show'

@@ -22,10 +22,13 @@
                     <li><a href="<?= BASE_URI?>/prices">Tarif</a></li>
                     <li><a href="<?= BASE_URI?>/job">Recrutement</a></li>
                     <li><a href="<?= BASE_URI?>/members">Liste des membres</a></li>
+                    @isnotlog
                     <li><a href="<?= BASE_URI?>/login">Connexion</a></li>
                     <li><a href="<?= BASE_URI?>/register">Inscription</a></li>
+                    @else
                     <li><a href="<?= BASE_URI?>/profil">Profil</a></li>
-                    <li><a href="#">Déconnexion</a></li>
+                    <li><a href="<?= BASE_URI?>/logout">Déconnexion</a></li>
+                    @endislog
                 </ul>
             </nav>
         </header>

@@ -16,6 +16,9 @@ class Entity
     protected $pdo;
 
     protected $primary_key = 'id';
+    protected $table = '';
+
+
 
     /**
      * Entity constructor.
@@ -27,8 +30,9 @@ class Entity
 
         if (array_key_first($params) === $this->primary_key) {
             $id = $params[$this->primary_key];
+
             $orm = new ORM();
-            $result = $orm->read('users', $id);
+            $result = $orm->read($this->table, $id, $this->primary_key);
 
             $this->param_to_attribut($result[0]);
         }

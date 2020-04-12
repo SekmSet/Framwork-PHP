@@ -21,12 +21,14 @@ class TemplateEngine
         '@if(.*)' => '<?php if $1 : ?>',
         '@elseif(.*)' => '<?php elseif $1 : ?>',
         '@else' => '<?php else : ?>',
-        '@endempty|@endif|@endisset' => '<?php endif ?>',
+        '@endempty|@endif|@endisset|@endislog' => '<?php endif ?>',
         '@foreach(.*)' => '<?php foreach $1 : ?>',
         '@endforeach' => '<?php endforeach ?>',
         '@empty(.*)' => '<?php if (empty $1) : ?>',
         '@notempty(.*)' => '<?php if (!empty $1) : ?>',
         '@isset(.*)' => '<?php if (isset $1) : ?>',
+        '@islog' => '<?php if (isset ($_SESSION["user_id"])) : ?>',
+        '@isnotlog' => '<?php if (!isset ($_SESSION["user_id"])) : ?>',
     ];
 
     /**

@@ -21,7 +21,6 @@ class UserController extends Controller
     public function loginCheckAction()
     {
         $errors =[];
-        $message =[];
 
         $params = $this->request->getQueryParams();
         $user = new UserModel($params);
@@ -29,35 +28,49 @@ class UserController extends Controller
         if ($user->login()) {
             $_SESSION['user_id'] = $user->id_perso;
             $_SESSION['nom'] = $user->nom;
-            $message[]='Vous êtes connecté ' . $_SESSION['nom'];
-            $this->render('profil', [
-                'messages' => $message
-            ]);
-        } else {
-            $errors[]='Aucun utilisateur trouvé, veuillez vérifier l\'adresse mail ou le mot de passe ! ';
-            $this->render('login', [
-                'errors' => $errors
-            ]);
+            header('location: '.BASE_URI.'/profil');
+            die;
         }
+
+        $errors[]='Aucun utilisateur trouvé, veuillez vérifier l\'adresse mail ou le mot de passe ! ';
+        $this->render('login', [
+            'errors' => $errors
+        ]);
     }
 
     public function registerAction()
     {
+        $errors=[];
+
         $params = $this->request->getQueryParams();
-//        $params = ['id' => 15];
         $user = new UserModel($params);
-        if (!$user->id_perso) {
-            $user->save() ;
-            echo 'Votre compte a ete cree.' .PHP_EOL;
+
+        $id_user = $user->save();
+
+
+        if(empty($id_user)){
+            $errors[] = "Un problème est surevenu lors de votre enregistrment, merci de reéssayer plus tard";
+            $this->render('register',[
+                'errrors' =>$errors
+            ]);
+            return;
         }
+
+        header('location: '.BASE_URI.'/login');
+        die;
     }
 
     public function show_profilAction()
     {
-        $id=2;
-        $profil = new ORM();
-        $profil->read('fiche_personne', $id);
-        $this->render('profil');
+        $this->user_is_log();
+        $id_perso = $_SESSION['user_id'];
+
+        $profil = new UserModel();
+        $info = $profil->read($id_perso);
+
+        $this->render('profil', [
+            'info' => $info
+        ]);
     }
 
     public function memberAction()
@@ -68,5 +81,48 @@ class UserController extends Controller
         $this->render('member', [
             'all_members' => $all_members
         ]);
+    }
+
+    public function logoutAction()
+    {
+        session_destroy();
+        header('location: '.BASE_URI.'/');
+        die;
+    }
+
+    public function changesAction(){
+        $this->user_is_log();
+
+        $params = $this->request->getQueryParams();
+        $user = new UserModel([
+            'id_perso' => $_SESSION['user_id']
+        ]);
+
+        $user->nom = $params['nom'];
+        $user->prenom = $params['prenom'];
+        $user->date_naissance = $params['date_naissance'];
+        $user->email = $params['email'];
+        $user->adresse = $params['adresse'];
+        $user->cpostal = $params['cpostal'];
+        $user->ville = $params['ville'];
+        $user->pays = $params['pays'];
+        $user->update();
+
+        header('location: '.BASE_URI.'/profil');
+        die;
+    }
+
+    public function deleteAction()
+    {
+        $this->user_is_log();
+
+        $user = new UserModel([
+            'id_perso' => $_SESSION['user_id']
+        ]);
+        $user->delete();
+
+        session_destroy();
+        header('location: '.BASE_URI.'/');
+        die;
     }
 }

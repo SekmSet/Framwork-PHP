@@ -11,7 +11,10 @@ class Core
         include('src/routes.php');
 
         $uri = $_SERVER['REQUEST_URI'];
-        Router::get($uri);
+        $uri_array = explode('?',$uri);
+
+
+        Router::get($uri_array[0]);
 
         //echo __CLASS__ . ' [ OK ]' . PHP_EOL ;
 

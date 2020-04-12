@@ -24,6 +24,14 @@ class Controller
         echo self::$_render;
     }
 
+    protected function user_is_log(): void
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('location: ' . BASE_URI . '/login');
+            die;
+        }
+    }
+
     protected function render(string $view, array $scope=[])
     {
         $file = implode(DIRECTORY_SEPARATOR, [
@@ -36,4 +44,6 @@ class Controller
         $tpl = new TemplateEngine($file, $scope);
         self::$_render = $tpl->render();
     }
+
+
 }

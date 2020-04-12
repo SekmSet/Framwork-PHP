@@ -7,6 +7,8 @@ use Core\Entity;
 
 class MovieModel extends Entity
 {
+    protected $table = 'salle';
+
     public function gender_by_movie($name)
     {
         $request = $this->pdo->prepare("select * from film inner join genre 

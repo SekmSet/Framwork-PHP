@@ -27,9 +27,9 @@ namespace Core;
          return $this->pdo->lastInsertId();
      }
 
-     public function read($table, $id) : array
+     public function read($table, $id, $primary_key = 'id') : array
      {
-         $request = $this->pdo->prepare("select * from $table where id = :id");
+         $request = $this->pdo->prepare("select * from $table where $primary_key = :id");
          $request->bindParam(':id', $id);
          $request->execute();
          return $request->fetchAll(PDO::FETCH_ASSOC);
