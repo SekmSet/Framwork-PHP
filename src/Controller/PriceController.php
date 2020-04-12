@@ -5,17 +5,28 @@ namespace Controller;
 
 use Core\Controller;
 use Core\ORM;
+use Model\PriceModel;
 use Model\UserModel;
 
 class PriceController extends Controller
 {
     public function reductionAction()
     {
-        $this->render('prices');
+        $reduction = new PriceModel();
+        $reductions = $reduction->get_reduction();
+        $this->render('prices', [
+            'reductions' => $reductions
+        ]);
     }
 
     public function subscriptionAction()
     {
-        $this->render('subscription');
+        $sub = new PriceModel();
+        $subs = $sub->get_sub();
+
+
+        $this->render('subscription', [
+            'subs' => $subs
+        ]);
     }
 }

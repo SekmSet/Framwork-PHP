@@ -22,6 +22,11 @@ Router::connect('/login', [
     'action'=> 'login'
 ]);
 
+Router::connect('/login_check', [
+    'controller'=>'user',
+    'action'=> 'loginCheck'
+]);
+
 Router::connect('/user/:id', [
     'controller' => 'user',
     'action' => 'show'
@@ -60,4 +65,19 @@ Router::connect('/movies/:name', [
 Router::connect('/history', [
     'controller' => 'movie',
     'action' => 'history'
+]);
+
+Router::connect('/salle', [
+    'controller' => 'movie',
+    'action' => 'salle'
+]);
+
+Router::connect('/salle/:name', [
+    'controller' => 'movie',
+    'action' => 'programme'
+]);
+
+Router::connect('/job', [
+    'controller' => 'job',
+    'action' => 'job'
 ]);

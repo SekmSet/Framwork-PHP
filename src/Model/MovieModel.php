@@ -33,4 +33,17 @@ class MovieModel extends Entity
 
         return $request->fetchAll();
     }
+
+    public function movie_show($name)
+    {
+        $request = $this->pdo->prepare("select * from salle 
+            inner join grille_programme on salle.id_salle = grille_programme.id_salle
+            inner join film  on grille_programme.id_film = film.id_film
+            where salle.nom = :name");
+
+        $request->execute([
+            'name' => $name
+        ]);
+        return $request->fetchAll();
+    }
 }

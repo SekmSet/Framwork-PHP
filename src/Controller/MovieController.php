@@ -5,6 +5,7 @@ namespace Controller;
 use Core\Controller;
 use Core\ORM;
 use Model\MovieModel;
+use Model\SalleModel;
 use Model\UserModel;
 
 class MovieController extends Controller
@@ -38,6 +39,27 @@ class MovieController extends Controller
 
         $this->render('movie_gender', [
             'info' => $info
+        ]);
+    }
+
+    public function programmeAction($name)
+    {
+        $name = urldecode($name);
+        $seance = new MovieModel();
+        $seances = $seance-> movie_show($name);
+
+        $this->render('movie_show', [
+            'seances' => $seances
+        ]);
+    }
+
+    public function salleAction()
+    {
+        $salle = new SalleModel();
+        $all_salles = $salle->get_salle();
+
+        $this->render('salle', [
+            'all_salles' => $all_salles
         ]);
     }
 }

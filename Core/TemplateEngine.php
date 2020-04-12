@@ -25,6 +25,7 @@ class TemplateEngine
         '@foreach(.*)' => '<?php foreach $1 : ?>',
         '@endforeach' => '<?php endforeach ?>',
         '@empty(.*)' => '<?php if (empty $1) : ?>',
+        '@notempty(.*)' => '<?php if (!empty $1) : ?>',
         '@isset(.*)' => '<?php if (isset $1) : ?>',
     ];
 

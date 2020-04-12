@@ -6,34 +6,44 @@ namespace Model;
 
  class UserModel extends Entity
  {
+     public $id_perso;
      public $email;
-     public $password;
-     public $id;
+     public $mdp;
+     public $nom;
+     protected $primary_key = 'id_perso';
+
 //     static $relations = [];
 
      public function save(): array
      {
-         $request = $this->pdo->prepare('INSERT INTO fiche_personne (email, password) VALUES (:email, :password)');
+         $request = $this->pdo->prepare('INSERT INTO fiche_personne (email, mdp) VALUES (:email, :mdp)');
          $request->bindParam(':email', $this->email);
-         $request->bindParam(':password', $this->password);
+         $request->bindParam(':mdp', $this->mdp);
          $request->execute();
 
          return [
             'email' => $this->email,
-            'password' => $this->password
+            'password' => $this->mdp
         ];
      }
 
-     public function read($id): array
+     public function login(): bool
      {
-         $request = $this->pdo->prepare('select * from fiche_personne where id = :id');
-         $request->bindParam(':email', $id);
-         $request->fetch();
+         $request = $this->pdo->prepare('select * from fiche_personne where email = :email and mdp = :mdp');
+         $request->bindParam(':email', $this->email);
+         $request->bindParam(':mdp', $this->mdp);
+         $request->execute();
 
-         return [
-            'email'=>$this->email,
-            'password'=>$this->password
-        ];
+         $user = $request->fetch();
+         if ($user) {
+             $this->id_perso = $user['id_perso'];
+             $this->email = $user['email'];
+             $this->mdp = $user['mdp'];
+             $this->nom = $user['nom'];
+             return true;
+         }
+
+         return false;
      }
      public function read_all(): array
      {
@@ -42,33 +52,33 @@ namespace Model;
 
          return [
             'email'=>$this->email,
-            'password'=>$this->password
+            'password'=>$this->mdp
         ];
      }
 
      public function update(): array
      {
-         $request = $this->pdo->prepare('update fiche_personne set email = :email, password = :password where id = :id');
+         $request = $this->pdo->prepare('update fiche_personne set email = :email, mdp = :mdp where id_perso = :id_perso');
          $request->bindParam(':email', $this->email);
-         $request->bindParam(':password', $this->password);
-         $request->bindParam(':id', $this->id);
+         $request->bindParam(':mdp', $this->mdp);
+         $request->bindParam(':id_perso', $this->id_perso);
          $request->execute();
 
          return [
             'email'=>$this->email,
-            'password'=>$this->password
+            'password'=>$this->mdp
         ];
      }
 
      public function delete(): array
      {
-         $request = $this->pdo->prepare('delete from fiche_personne where id = :id');
-         $request->bindParam(':id', $this->id);
+         $request = $this->pdo->prepare('delete from fiche_personne where id_perso = :id_perso');
+         $request->bindParam(':id_perso', $this->id_perso);
          $request->execute();
 
          return [
             'email'=>$this->email,
-            'password'=>$this->password
+            'password'=>$this->mdp
         ];
      }
  }

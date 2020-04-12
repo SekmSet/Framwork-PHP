@@ -18,46 +18,38 @@ class UserController extends Controller
         $this->render('login');
     }
 
-    public function registerAction()
+    public function loginCheckAction()
     {
-        echo 'registerAction';
-//        $this->render('register');
-
-//        $email = $this->request->getQueryParams();
-//        $password = $this->request->getQueryParams();
-
-
-//        $user_add = new UserModel($params);
-//        $orm = new ORM();
-//        $result = $orm->update('user', 107, [
-//            'email' => 'tat@tt.tt',
-//            'password' => 'azera'
-//        ]);
+        $errors =[];
+        $message =[];
 
         $params = $this->request->getQueryParams();
-//        $params = ['id' => 15];
         $user = new UserModel($params);
-        if (!$user->id) {
-            $user->save() ;
-            echo 'Votre compte a ete cree.' .PHP_EOL;
+
+        if ($user->login()) {
+            $_SESSION['user_id'] = $user->id_perso;
+            $_SESSION['nom'] = $user->nom;
+            $message[]='Vous êtes connecté ' . $_SESSION['nom'];
+            $this->render('profil', [
+                'messages' => $message
+            ]);
+        } else {
+            $errors[]='Aucun utilisateur trouvé, veuillez vérifier l\'adresse mail ou le mot de passe ! ';
+            $this->render('login', [
+                'errors' => $errors
+            ]);
         }
     }
 
-    public function showAction($id): void
+    public function registerAction()
     {
-        $user1 = new \stdClass();
-        $user1->id=1;
-        $user1->name='bobo';
-
-        $user2 = new \stdClass();
-        $user2->id=2;
-        $user2->name='bobi';
-
-        $this->render('show', [
-            'id' => (int)$id,
-            'var' => '',
-            'users' => [ $user1,$user2 ]
-        ]);
+        $params = $this->request->getQueryParams();
+//        $params = ['id' => 15];
+        $user = new UserModel($params);
+        if (!$user->id_perso) {
+            $user->save() ;
+            echo 'Votre compte a ete cree.' .PHP_EOL;
+        }
     }
 
     public function show_profilAction()

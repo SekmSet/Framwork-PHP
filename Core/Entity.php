@@ -15,6 +15,8 @@ class Entity
      */
     protected $pdo;
 
+    protected $primary_key = 'id';
+
     /**
      * Entity constructor.
      * @param array $params
@@ -23,8 +25,8 @@ class Entity
     {
         $this->pdo = Database::databse_connexion();
 
-        if (array_key_first($params) === 'id') {
-            $id = $params['id'];
+        if (array_key_first($params) === $this->primary_key) {
+            $id = $params[$this->primary_key];
             $orm = new ORM();
             $result = $orm->read('users', $id);
 
