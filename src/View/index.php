@@ -15,6 +15,7 @@
     <h1 class="my-0 mr-md-auto font-weight-normal"><a href="<?= BASE_URI ?>/">My Cinéma</a></h1>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="<?= BASE_URI ?>/movies">Films</a>
+        <a class="p-2 text-dark" href="<?= BASE_URI ?>/genres">Genres</a>
         <a class="p-2 text-dark" href="<?= BASE_URI ?>/salle">Salles</a>
         <a class="p-2 text-dark" href="<?= BASE_URI ?>/subscription">Abonnement</a>
         <a class="p-2 text-dark" href="<?= BASE_URI ?>/prices">Tarif</a>

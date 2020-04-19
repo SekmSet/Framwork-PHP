@@ -133,4 +133,8 @@ class MovieController extends Controller
             'movie'=>$movie
         ]);
     }
+
+    public function movieHistoryAction(){
+
+    }
 }

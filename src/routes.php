@@ -87,6 +87,11 @@ Router::connect('/movies/change/:id', [
     'action' => 'changeMovie'
 ]);
 
+Router::connect('/movies/add/history/:id', [
+    'controller' => 'movie',
+    'action' => 'movieHistory'
+]);
+
 Router::connect('/movies/:id', [
     'controller' => 'movie',
     'action' => 'movieGender'
@@ -110,4 +115,24 @@ Router::connect('/salle/:name', [
 Router::connect('/job', [
     'controller' => 'job',
     'action' => 'job'
+]);
+
+Router::connect('/genres', [
+    'controller' => 'genre',
+    'action' => 'list'
+]);
+
+Router::connect('/genre/create', [
+    'controller' => 'genre',
+    'action' => 'create'
+]);
+
+Router::connect('/genre/delete/:id', [
+    'controller' => 'genre',
+    'action' => 'delete'
+]);
+
+Router::connect('/genre/change/:id', [
+    'controller' => 'genre',
+    'action' => 'change'
 ]);

@@ -22,6 +22,6 @@
     <ul>
         <li><a href="<?= BASE_URI ?>/movies/change/{{$info['id_film']}}">Modifier</a></li>
         <li><a href="<?= BASE_URI ?>/movies/delete/{{$info['id_film']}}">Supprimer </a></li>
-        <li><a href="<?= BASE_URI ?>/movies/history/{{$info['id_film']}}"">Ajouter à mon historique</a></li>
+        <li><a href="<?= BASE_URI ?>/movies/add/history/{{$info['id_film']}}"">Ajouter à mon historique</a></li>
     </ul>
 @endempty
