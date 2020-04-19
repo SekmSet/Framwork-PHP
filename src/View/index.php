@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="<?= BASE_URI ?>/webroot/assets/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URI?>/webroot/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -20,13 +21,13 @@
         <a class="p-2 text-dark" href="<?= BASE_URI ?>/subscription">Abonnement</a>
         <a class="p-2 text-dark" href="<?= BASE_URI ?>/prices">Tarif</a>
         <a class="p-2 text-dark" href="<?= BASE_URI ?>/job">Recrutement</a>
-        <a class="p-2 text-dark" href="<?= BASE_URI ?>/members">Liste des membres</a>
     </nav>
 
     @isnotlog
     <a class="btn btn-outline-primary" href="<?= BASE_URI ?>/login">Connexion</a>
     <a class="btn btn-outline-primary" href="<?= BASE_URI ?>/register">Inscription</a>
     @else
+    <a class="p-2 text-dark" href="<?= BASE_URI ?>/members">Liste des membres</a>
     <a class="btn btn-outline-primary" href="<?= BASE_URI ?>/profil">Profil</a>
     <a class="btn btn-outline-primary" href="<?= BASE_URI ?>/history">Mon historique film</a>
     <a class="btn btn-outline-primary" href="<?= BASE_URI ?>/logout">Déconnexion</a>

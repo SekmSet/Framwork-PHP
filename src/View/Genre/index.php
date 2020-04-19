@@ -1,4 +1,5 @@
 <h2>Genre</h2>
+<hr>
 @islog
 <form method="post" action="<?= BASE_URI ?>/genre/create">
     <div class="form-group">
@@ -12,6 +13,7 @@
 @endislog
 @foreach ($all_genre as $genre)
     <h3>{{$genre['nom']}}</h3>
+    @islog
         <ul>
             <li>
                 <form action="">
@@ -22,6 +24,6 @@
                     <li><a href="<?= BASE_URI ?>/genre/change/{{$genre['id_genre']}}">Modifier ce genre</a></li>
                 </ul>
             </li>
-
         </ul>
+    @endislog
 @endforeach
