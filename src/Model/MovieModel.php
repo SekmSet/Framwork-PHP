@@ -38,6 +38,7 @@ class MovieModel extends Entity
         $request->bindParam(":annee_prod", $this->annee_prod);
 
         $request->execute();
+
         return $this->pdo->lastInsertId();
     }
 

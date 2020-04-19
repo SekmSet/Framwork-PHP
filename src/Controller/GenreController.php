@@ -27,6 +27,9 @@ class GenreController extends Controller
             $genre = new GenreModel($params);
             $genre->save();
         }
+
+        header('location: ' . BASE_URI . '/genres');
+        die;
     }
 
     public function changeAction($id)

@@ -43,10 +43,10 @@
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Envoyer</button>
 </form>
-
-<button id="button_changes_profil">Modifier mon profil</button>
-
+<hr>
+<button class="btn btn-primary"id="button_changes_profil">Modifier mon profil</button>
+<hr>
 
 <form action="<?= BASE_URI ?>/profil/delete" id="delete_account">
-    <button id="button_delete_profil">Supprimer mon profil</button>
+    <button class="btn btn-primary" id="button_delete_profil">Supprimer mon profil</button>
 </form>

@@ -8,7 +8,7 @@
 
     <div class="form-group">
         <label for="resum">Résumé</label>
-        <textarea class="form-control" id="resum" rows="3"></textarea>
+        <textarea class="form-control" name="resum" id="resum" rows="3"></textarea>
     </div>
 
     <div class="form-group">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="form-group">
-        <label for="duree">Durée (en minute) <input class="form-control" type="text" name="duree"></label>
+        <label for="duree">Durée (en minute) <input class="form-control" type="text" name="duree_min"></label>
     </div>
 
     <div class="form-group">

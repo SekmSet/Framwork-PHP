@@ -10,9 +10,4 @@ class AppController extends Controller
     {
         $this->render('home');
     }
-
-    public function notFoundAction()
-    {
-        echo "Page 404 \n ";
-    }
 }

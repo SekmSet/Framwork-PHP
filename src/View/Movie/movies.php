@@ -1,8 +1,10 @@
 <h2>Liste des films</h2>
 
+<hr>
 <form method="post" action="<?= BASE_URI ?>/movies/new">
     <button  class="btn btn-primary">Ajouter un film</button>
 </form>
+<hr>
 
 @foreach($all_movies as $value)
     <h3> {{$value['titre']}} </h3>

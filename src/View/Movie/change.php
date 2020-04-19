@@ -8,7 +8,7 @@
 
     <div class="form-group">
         <label for="resum">Résumé</label>
-        <textarea class="form-control" id="resum" rows="3">{{$movie->resum}}</textarea>
+        <textarea class="form-control" id="resum" name="resum" rows="3">{{$movie->resum}}</textarea>
     </div>
 
     <div class="form-group">

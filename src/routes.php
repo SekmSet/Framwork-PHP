@@ -80,12 +80,6 @@ Router::connect('/movies', [
     'action' => 'movie'
 ]);
 
-// page d'un film
-Router::connect('/movies/:id', [
-    'controller' => 'movie',
-    'action' => 'movieGender'
-]);
-
 // page pour ajouter un nouveau film
 Router::connect('/movies/new', [
     'controller' => 'movie',
@@ -102,6 +96,12 @@ Router::connect('/movies/delete/:id', [
 Router::connect('/movies/change/:id', [
     'controller' => 'movie',
     'action' => 'changeMovie'
+]);
+
+// page d'un film
+Router::connect('/movies/:id', [
+    'controller' => 'movie',
+    'action' => 'movieGender'
 ]);
 
 // pour ajouter un film à son historique

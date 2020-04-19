@@ -13,7 +13,6 @@ class GenreModel extends Entity
     protected $table = 'genre';
     protected $primary_key = 'id_genre';
 
-
     public function read($id_genre)
     {
         $request = $this->pdo->prepare("select * from $this->table 

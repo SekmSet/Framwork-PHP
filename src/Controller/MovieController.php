@@ -59,6 +59,7 @@ class MovieController extends Controller
     public function newMovieAction()
     {
         $this->user_is_log();
+
         $gender = new ORM();
         $all_genders = $gender->read_all('genre');
 
@@ -68,7 +69,10 @@ class MovieController extends Controller
         $params = $this->request->getQueryParams();
         if (!empty($params)) {
             $movie = new MovieModel($params);
-            $movie->save();
+            $last_id = $movie->save();
+
+            header('location: ' . BASE_URI . "/movies/$last_id");
+            die;
         }
 
         $this->render('new', [
@@ -78,7 +82,7 @@ class MovieController extends Controller
     }
     public function deleteMovieAction($id)
     {
-//        $this->user_is_log();
+        $this->user_is_log();
         $delete = new MovieModel();
         $delete->delete($id);
         header('location: ' . BASE_URI . '/movies');
@@ -87,7 +91,7 @@ class MovieController extends Controller
 
     public function changeMovieAction($id)
     {
-//        $this->user_is_log();
+        $this->user_is_log();
 
         $movie = new MovieModel([
             'id_film' => $id
@@ -111,6 +115,8 @@ class MovieController extends Controller
             $movie->duree_min = $params['duree_min'];
             $movie->annee_prod = $params['annee_prod'];
             $movie->update();
+            header('location: ' . BASE_URI . '/movies/'.$id);
+            die;
         }
 
 
