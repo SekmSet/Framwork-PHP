@@ -14,7 +14,6 @@ class Entity
      * @var PDO
      */
     protected $pdo;
-
     protected $primary_key = 'id';
     protected $table = '';
 

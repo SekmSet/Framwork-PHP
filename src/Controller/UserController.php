@@ -58,7 +58,7 @@ class UserController extends Controller
         $membre->save();
 
         if (empty($id_user)) {
-            $errors[] = "Un problème est surevenu lors de votre enregistrment, merci de reéssayer plus tard";
+            $errors[] = 'Un problème est surevenu lors de votre enregistrment, merci de reéssayer plus tard';
             $this->render('register', [
                 'errrors' => $errors
             ]);

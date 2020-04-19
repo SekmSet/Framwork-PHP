@@ -22,7 +22,7 @@ class ORM extends Database
 
         $request = $this->pdo->prepare("INSERT INTO $table ($key_fields) VALUES ($value_fields)");
 
-        echo $request->queryString;
+//        echo $request->queryString;
         $request->execute();
         return $this->pdo->lastInsertId();
     }
@@ -52,7 +52,7 @@ class ORM extends Database
 
     public function read_all($table): array
     {
-        $request = $this->pdo->query("select * from $table  ");
+        $request = $this->pdo->query("select * from $table");
         return $request->fetchAll(PDO::FETCH_ASSOC);
     }
 

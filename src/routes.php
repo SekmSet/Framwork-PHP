@@ -72,7 +72,22 @@ Router::connect('/movies', [
     'action' => 'movie'
 ]);
 
-Router::connect('/movies/:name', [
+Router::connect('/movies/new', [
+    'controller' => 'movie',
+    'action' => 'newMovie'
+]);
+
+Router::connect('/movies/delete/:id', [
+    'controller' => 'movie',
+    'action' => 'deleteMovie'
+]);
+
+Router::connect('/movies/change/:id', [
+    'controller' => 'movie',
+    'action' => 'changeMovie'
+]);
+
+Router::connect('/movies/:id', [
     'controller' => 'movie',
     'action' => 'movieGender'
 ]);
