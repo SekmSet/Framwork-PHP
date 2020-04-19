@@ -18,10 +18,20 @@
     <p>{{$info['resum']}}</p>
 
     <hr>
+@endempty
 
+@islog
     <ul>
         <li><a href="<?= BASE_URI ?>/movies/change/{{$info['id_film']}}">Modifier</a></li>
         <li><a href="<?= BASE_URI ?>/movies/delete/{{$info['id_film']}}">Supprimer </a></li>
-        <li><a href="<?= BASE_URI ?>/movies/add/history/{{$info['id_film']}}"">Ajouter à mon historique</a></li>
     </ul>
-@endempty
+
+    <form method="post" action="<?= BASE_URI ?>/movies/add/history/{{$info['id_film']}}">
+        <div class="form-group">
+            <label for="avis">Mon avis </label>
+            <textarea name="avis" class="form-control" id="avis" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary">Ajouter à mon historique</button>
+    </form>
+@endislog
+

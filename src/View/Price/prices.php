@@ -1,7 +1,7 @@
 <h2>Les prix</h2>
 
 @foreach($reductions as $value)
-<p> {{$value['nom']}} </p>
+<h3> {{$value['nom']}} </h3>
 
 @notempty($value['date_debut'])
 <p>Date début : {{$value['date_debut']}}</p>

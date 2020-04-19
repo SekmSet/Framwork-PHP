@@ -9,19 +9,6 @@ use Model\SalleModel;
 
 class MovieController extends Controller
 {
-    public function historyAction()
-    {
-        $this->user_is_log();
-
-        $user_id = $_SESSION['user_id'];
-        $history = new MovieModel();
-        $my_history = $history->historique($user_id);
-
-        $this->render('history', [
-            'my_history' => $my_history
-        ]);
-    }
-
     public function movieAction()
     {
         $movies = new ORM();
@@ -132,9 +119,5 @@ class MovieController extends Controller
             'all_distribs'=>$all_distribs,
             'movie'=>$movie
         ]);
-    }
-
-    public function movieHistoryAction(){
-
     }
 }

@@ -4,6 +4,7 @@
 namespace Model;
 
 use Core\Entity;
+use PDO;
 
 class MemberModel extends Entity
 {
@@ -32,5 +33,15 @@ class MemberModel extends Entity
         $request->execute();
 
         return $this->pdo->lastInsertId();
+    }
+
+    public function get_membre($id_fiche_perso)
+    {
+        $request = $this->pdo->prepare("SELECT * FROM $this->table where id_fiche_perso = :id_fiche_perso");
+        $request->execute([
+            ':id_fiche_perso'=>$id_fiche_perso
+        ]);
+
+        return $request->fetch(PDO::FETCH_ASSOC);
     }
 }

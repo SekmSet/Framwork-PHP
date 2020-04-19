@@ -3,25 +3,24 @@
 
 namespace Controller;
 
-
 use Core\Controller;
 use Model\GenreModel;
 use Model\MovieModel;
 
 class GenreController extends Controller
 {
-
-    public function listAction(){
-
+    public function listAction()
+    {
         $genre = new GenreModel();
         $all_genre = $genre->read_all();
 
-        $this->render('index',[
+        $this->render('index', [
             'all_genre' => $all_genre
         ]);
     }
 
-    public function createAction(){
+    public function createAction()
+    {
         $this->user_is_log();
         $params = $this->request->getQueryParams();
         if (!empty($params)) {
@@ -30,7 +29,8 @@ class GenreController extends Controller
         }
     }
 
-    public function changeAction($id){
+    public function changeAction($id)
+    {
         $this->user_is_log();
 
         $genre = new GenreModel([
@@ -46,12 +46,13 @@ class GenreController extends Controller
             die;
         }
 
-        $this->render('edit',[
+        $this->render('edit', [
             'result_genre' => $genre
         ]);
     }
 
-    public function deleteAction($id_genre){
+    public function deleteAction($id_genre)
+    {
         $this->user_is_log();
         $genre = new GenreModel();
         $genre->delete($id_genre);

@@ -37,7 +37,8 @@ class Entity
         $this->param_to_attribut($params);
     }
 
-    public function read_all(){
+    public function read_all()
+    {
         $request = $this->pdo->query("select * from $this->table");
         return $request->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -51,6 +52,4 @@ class Entity
             $this->$key = $value;
         }
     }
-
-
 }

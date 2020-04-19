@@ -3,7 +3,6 @@
 
 namespace Model;
 
-
 use Core\Entity;
 use PDO;
 
@@ -15,7 +14,8 @@ class GenreModel extends Entity
     protected $primary_key = 'id_genre';
 
 
-    public function read($id_genre){
+    public function read($id_genre)
+    {
         $request = $this->pdo->prepare("select * from $this->table 
             where id_genre = :id_genre");
 
@@ -26,7 +26,8 @@ class GenreModel extends Entity
         return $request->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function save(){
+    public function save()
+    {
         $request = $this->pdo->prepare("INSERT INTO $this->table 
             (nom) VALUES 
             (:nom)");
@@ -35,7 +36,8 @@ class GenreModel extends Entity
         $request->execute();
         return $this->pdo->lastInsertId();
     }
-    public function update(){
+    public function update()
+    {
         $request = $this->pdo->prepare(
             "update $this->table set nom = :nom where id_genre = :id_genre"
         );
@@ -43,7 +45,8 @@ class GenreModel extends Entity
         $request->bindParam(':nom', $this->nom);
         $request->execute();
     }
-    public function delete($id_genre){
+    public function delete($id_genre)
+    {
         $request = $this -> pdo->prepare("delete from $this->table where id_genre = :id_genre");
         $request->execute([
             'id_genre' => $id_genre
